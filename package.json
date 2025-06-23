@@ -1,0 +1,19 @@
+{
+  "name": "kseb",
+  "version": "1.0.0",
+  "description": "# 5일 교육 과정",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gunrein620/node-kseb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gunrein620/node-kseb/issues"
+  },
+  "homepage": "https://github.com/gunrein620/node-kseb#readme"
+}
