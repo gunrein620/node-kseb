@@ -19,5 +19,6 @@ nodeJS 기본 문법
 # 2일차 
 
 http 모듈 활용 서버만들기 
+라우팅
 
 nodemon 활용
