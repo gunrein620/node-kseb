@@ -29,8 +29,8 @@ app.put("/update/:id", (req, res) => {
 //   res.send(`${id} 안녕`)
 // })
 
-app.put("/list/:id", (req, res) => {
-  const { id } = req.params; // 또는 const id = req.params.id;
+app.put("/list/:abc", (req, res) => {
+  const id = req.params.abc;
   res.status(200).send(`${id} 안녕`);
 });
 
