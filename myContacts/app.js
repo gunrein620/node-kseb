@@ -1,56 +1,16 @@
+// 웹 서버 실행
 const express = require("express");
-const fs =require("fs")
-
-const app = express();
-const port = 3000;
-
-// 초기화면
-app.get("/",(req, res)=> {
-  res.status(200);
-  // res.send("Hello express Node");
-  res.json("json text");
-  // const headers = req.headers;
-  // res.send(headers);
-})
-
-// 모든 연락처 가져오기
-app.get("/contacts", (req, res)=> {
-  res.status(200)
-  res.sendFile(__dirname + "/assets/contact.html") // 파일의 내용을 보내기
-  // .send("Contacts page")
-  fs
-})
-
-// id의 연락처 가져오기
-app.get("/contacts/:id", (req, res)=> {
-  res
-  .status(200)
-  .send("Contacts 1page")
-})
+const app = express();  // 앱서버 생성
+//const router = express.Router();   // 라우터 사용
+const port = 3000;      // 포트번호 지정
 
 
-// 연락처 추가하기 
-app.post("/contacts",(req, res) => {
-  res
-  .status(200)
-  .send("creat Contacts");
-})
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 
-// 연락처 수정하기 
-app.put("/contacts", (req, res) => {
-  const params = req.params;
-  console.log(params.id);
-  res.status(200).send(params)
-})
-
-// 연락처 삭제
-app.delete("/contacts", (req, res) => {
-  res.status(200).send("Delete Contact")
-})
-
-
+app.use("/contacts", require("./routes/contactRoutes"));
 
 // 서버 실행
-app.listen(port,()=> {
-  console.log(`${port}번 포트에서 서버실행중`);
-})
+app.listen(port, () => {
+  console.log(`${port}번 포트에서 서버 실행 중`);
+});
