@@ -3,6 +3,8 @@ const express = require("express");
 const dbConnect = require("./config/dbConnect");
 const methodOverride = require("method-override");
 const app = express();  // 앱서버 생성
+const expressLayouts = require("express-ejs-layouts");
+
 const port = 3000;      // 포트번호 지정
    
 app.set("view engine", "ejs"); //템플릿 엔진을 사용하겠다
@@ -13,6 +15,8 @@ app.use(methodOverride("_method"))
 dbConnect();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
+
+app.use("/", require("./routes/main"));
 
 app.use("/", require("./routes/loginRoutes"));
 app.use("/contacts", require("./routes/contactRoutes"));

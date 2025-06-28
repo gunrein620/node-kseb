@@ -4,7 +4,8 @@ const {
   getLogin,
   loginUser,
   getRegister,
-  registerAdmin
+  registerAdmin,
+  logout
 } = require("../controllers/loginController");
 
 router.route("/")
@@ -15,5 +16,8 @@ router.route("/")
 router.route("/register")
 .get(getRegister)
 .post(registerAdmin)
+
+//로그아웃 라우트
+router.route("/logout").get(logout);
 
 module.exports = router;

@@ -34,7 +34,8 @@ const getLogin = (req, res) => {
 
 // login check POST
 const loginUser = asyncHandler( async (req, res) => {
-  const user = await Admin.findOne({username});
+  const { username, password } = req.body;
+  const user = await Admin.findOne({ username });
   if (!user){
     return res.status(401).json({message: "일치하는 사용자 없음"});
   }
@@ -56,6 +57,12 @@ const loginUser = asyncHandler( async (req, res) => {
   // }
 
   //사용자 아이디 기반 jwet 토큰 생성
-
 })
-module.exports = {getLogin, loginUser,getRegister, registerAdmin};
+
+//logout get
+const logout = (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/");
+}
+
+module.exports = {getLogin, loginUser,getRegister, registerAdmin, logout};
